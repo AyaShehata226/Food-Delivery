@@ -47,3 +47,9 @@ border:none;
     border: 3px solid tomato;
     padding:2px;
 }
+@media(max-width:412){
+    .explore-menu-text{
+        max-width:100%;
+        font-size:14px;
+    }
+}

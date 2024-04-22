@@ -20,6 +20,11 @@
     align-items: center;
     gap:40px;
 }
+.navbar-right .icon{
+    font-size:30px;
+    color:#49557e;
+
+}
 .navbar button{
     background: transparent;
     font-size:16px;

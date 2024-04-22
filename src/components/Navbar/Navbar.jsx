@@ -3,6 +3,10 @@ import "./Navbar.css";
 import { assets } from "./../../assets/assets";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
+import { HiMagnifyingGlass } from "react-icons/hi2";
+import { FaShoppingCart } from "react-icons/fa";
+
+
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("Home");
 
@@ -55,10 +59,12 @@ const Navbar = ({ setShowLogin }) => {
           </a>
         </ul>
         <div className="navbar-right">
-          <img src={assets.search_icon} alt="search" />
+          {/* <img src={assets.search_icon} alt="search" /> */}
+          <HiMagnifyingGlass className="icon"/>
           <div className="navbar-search-icon">
             <Link to="/cart">
-              <img src={assets.basket_icon}/>
+              {/* <img src={assets.basket_icon}/> */}
+              <FaShoppingCart className="icon"/>
               <div className={getTotalCartAmount()===0?"":"dot"}></div>
             </Link>
           </div>

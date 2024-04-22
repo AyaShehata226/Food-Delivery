@@ -26,8 +26,8 @@ align-items:center;
 color:black;
 }
 
-.login-title img{
-    width:16px;
+.login-title .icon{
+    font-size:30px;
     cursor:pointer;
 }
 .login-inputs{

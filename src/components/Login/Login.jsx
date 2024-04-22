@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { assets } from '../../assets/assets';
+import { HiMiniXMark } from "react-icons/hi2";
 const Login = ({setShowLogin}) => {
     const [currentState , setCurrentState] = useState("Login");
     return (
@@ -8,7 +9,8 @@ const Login = ({setShowLogin}) => {
             <form className='login-container'>
                 <div className='login-title'>
                     <h2>{currentState}</h2>
-                    <img src={assets.cross_icon} onClick={()=>setShowLogin(false)} alt="Close"/>
+\                    <HiMiniXMark className='icon' onClick={()=>setShowLogin(false)}/>
+                    
                 </div>
                 <div className='login-inputs'>
                     {currentState==="Login"?<></>:<input type="text" placeholder='Your Name'  required/>}

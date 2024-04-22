@@ -31,6 +31,9 @@
     gap:max(12vw , 20px);
 
 }
+.cart-items-item .remove .icon{
+    font-size:30px;
+}
 .cart-total{
     flex:1;
     display:flex;

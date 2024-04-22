@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./Cart.css";
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
+import { HiMiniXMark } from "react-icons/hi2";
 const Cart = () => {
   const { cartItems, food_list, removeFromCart ,  getTotalCartAmount } = useContext(StoreContext);
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Cart = () => {
                       onClick={() => removeFromCart(item._id)}
                       className="remove"
                     >
-                      x
+                      <HiMiniXMark className="icon"/>
                     </p>
                   </div>
                   <hr />

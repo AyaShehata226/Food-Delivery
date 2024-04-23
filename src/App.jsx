@@ -1,4 +1,4 @@
-import React, { useState }  from 'react'
+import React, { useEffect, useState }  from 'react'
 import Navbar from './components/Navbar/Navbar'
 import { Routes , Route } from 'react-router-dom'
 import Home from './pages/Home/Home'
@@ -9,6 +9,8 @@ import Login from './components/Login/Login'
 
 function App() {
   const [showLogin , setShowLogin] = useState();
+  useEffect(()=>{
+  },[])
   return (
     <>
     {showLogin?<Login setShowLogin={setShowLogin}/>:<></>}

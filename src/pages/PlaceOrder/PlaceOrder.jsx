@@ -1,28 +1,42 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
 const PlaceOrder = () => {
   const {getTotalCartAmount} = useContext(StoreContext);
+  const [userInfo , setUserInfo] = useState({});
+  const handleOnChange = (evt)=>{
+    if(evt.target.name === "firstName"){
+      setUserInfo({...userInfo, firstName:evt.target.value});
+    }else if(evt.target.name === "lastName"){
+      setUserInfo({...userInfo, lastName:evt.target.value});
+    }else if(evt.target.name === "email"){
+      setUserInfo({...userInfo, email:evt.target.value});
+    }else if(evt.target.name === "city"){
+      setUserInfo({...userInfo, city:evt.target.value});
+    }else if(evt.target.name === "street"){
+      setUserInfo({...userInfo, street:evt.target.value});
+    }else if(evt.target.name === "phone"){
+      setUserInfo({...userInfo, phone:evt.target.value});
+    }
+  }
+  useEffect(()=>{
+    // console.log(userInfo);
+  },[userInfo])
   return (
     <>
     <div className="place-order">
       <div className="place-order-left">
         <p className="title">Delivery Information</p>
         <div className="mulit-fields">
-          <input type="text" placeholder="First name" />
-          <input type="text" placeholder="Last name" />
+          <input type="text" placeholder="First name" name="firstName" onChange={(e)=>{handleOnChange(e)}} />
+          <input type="text" placeholder="Last name" name="lastName" onChange={(e)=>{handleOnChange(e)}} />
         </div>
-        <input type="email" placeholder="Email address"/>
-        <input type="text" placeholder="Street" />
+        <input type="email" placeholder="Email address" name="email" onChange={(e)=>{handleOnChange(e)}}/>
         <div className="mulit-fields">
-          <input type="text" placeholder="city" />
-          <input type="text" placeholder="State" />
+          <input type="text" placeholder="city" name="city" onChange={(e)=>{handleOnChange(e)}} />
+          <input type="text" placeholder="Street" name="street" onChange={(e)=>{handleOnChange(e)}} />
         </div>
-        <div className="mulit-fields">
-          <input type="text" placeholder="Zip code" />
-          <input type="text" placeholder="Country" />
-        </div>
-        <input type="text" placeholder="Phone"/>
+        <input type="text" placeholder="Phone" name="phone" onChange={(e)=>{handleOnChange(e)}}/>
       </div>
       <div className="place-order-right">
       <div className="cart-total">
@@ -36,12 +50,12 @@ const PlaceOrder = () => {
                 <hr/>
                 <div className="cart-total-detalis">
                   <p>Delivery Fee</p>
-                  <p>${2}</p>
+                  <p>${getTotalCartAmount()?2:0}</p>
                 </div>
                 <hr/>
                 <div className="cart-total-detalis">
                   <b>Total</b>
-                  <p>${getTotalCartAmount()+2}</p>
+                  <p>${getTotalCartAmount()?getTotalCartAmount()+2:0}</p>
                 </div>
               </div>
             </div>

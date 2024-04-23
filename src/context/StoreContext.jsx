@@ -4,6 +4,7 @@ export const StoreContext = createContext(null)
 
 const StoreContextProvider = (props)=>{
     const [cartItems , setCartItems] = useState({});
+    const [isLoggedIn , setIsLoggedIn] = useState(true);
     const addToCart = (itemId)=>{
         if(!cartItems[itemId]){
             setCartItems((prev)=>({...prev ,[itemId]:1}))
@@ -32,9 +33,10 @@ const StoreContextProvider = (props)=>{
         addToCart,
         removeFromCart,
         getTotalCartAmount,
+        isLoggedIn,
+        setIsLoggedIn
     }
     useEffect(()=>{
-        console.log(getTotalCartAmount())
     })
     return(
         <StoreContext.Provider value={contextValue}>

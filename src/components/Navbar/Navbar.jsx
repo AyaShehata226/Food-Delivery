@@ -3,17 +3,17 @@ import "./Navbar.css";
 import { assets } from "./../../assets/assets";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
-import { HiMagnifyingGlass } from "react-icons/hi2";
-import { FaShoppingCart } from "react-icons/fa";
-
-
-const Navbar = ({ setShowLogin }) => {
+import { AiOutlineUser } from "react-icons/ai";
+const Navbar = ({ setShowLogin}) => {
   const [menu, setMenu] = useState("Home");
-
-  const {getTotalCartAmount} = useContext(StoreContext);
-  useEffect(()=>{
-    console.log(getTotalCartAmount());
-  },[])
+  const { getTotalCartAmount ,isLoggedIn , setIsLoggedIn } = useContext(StoreContext);
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    setIsLoggedIn(false);
+  };
+  useEffect(() => {
+    console.log(isLoggedIn);
+  }, [isLoggedIn]);
   return (
     <>
       <div className="navbar">
@@ -58,17 +58,21 @@ const Navbar = ({ setShowLogin }) => {
             Contact us
           </a>
         </ul>
-        <div className="navbar-right">
-          {/* <img src={assets.search_icon} alt="search" /> */}
-          <HiMagnifyingGlass className="icon"/>
+        <div className="navbar-right"> 
+          <img src={assets.search_icon} alt="search" />
           <div className="navbar-search-icon">
             <Link to="/cart">
-              {/* <img src={assets.basket_icon}/> */}
-              <FaShoppingCart className="icon"/>
-              <div className={getTotalCartAmount()===0?"":"dot"}></div>
+              <img src={assets.basket_icon} />
+              <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
             </Link>
           </div>
-          <button onClick={() => setShowLogin(true)}>sing in</button>
+          {isLoggedIn ? (
+            <button onClick={handleLogout}>
+              <AiOutlineUser className="userIcon"/>
+              </button>
+          ) : (
+            <button onClick={() => setShowLogin(true)}>Sign in</button>
+          )}
         </div>
       </div>
     </>

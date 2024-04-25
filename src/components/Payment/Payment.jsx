@@ -71,11 +71,6 @@ const handleOnChange = (e) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
   };
-  useEffect(() => {
-    console.log(isLoggedIn);
-    console.log("show" , showLogin);
-
-  }, [isLoggedIn , showLogin]);
   return (
     <form className="parent" onSubmit={handleOnSubmit}>
       <div className="pay">

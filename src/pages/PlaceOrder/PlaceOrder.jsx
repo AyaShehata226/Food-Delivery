@@ -22,8 +22,7 @@ const PlaceOrder = () => {
   }
   const navigate =useNavigate();
   useEffect(()=>{
-    // console.log(userInfo);
-  },[userInfo])
+  },[])
   return (
     <>
     <div className="place-order">

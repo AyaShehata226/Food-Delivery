@@ -55,9 +55,6 @@ const Login = () => {
   const handelOnSupmit = (e) => {
     e.preventDefault();
   };
-  useEffect(() => {
-    console.log(isLoggedIn);
-  }, [isLoggedIn]);
   return (
     <div className="login">
       <form className="login-container " onSubmit={handelOnSupmit}>

@@ -11,9 +11,6 @@ const Navbar = () => {
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
   };
-  useEffect(() => {
-    // console.log(isLoggedIn);
-  }, [isLoggedIn]);
   return (
     <>
       <div className="navbar">

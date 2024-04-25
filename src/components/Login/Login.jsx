@@ -4,12 +4,12 @@ import { assets } from "../../assets/assets";
 import { json, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { StoreContext } from "../../context/StoreContext";
-const Login = ({ setShowLogin}) => {
+const Login = () => {
   const [currentState, setCurrentState] = useState("Login");
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
   const [isChecked, setIsChecked] = useState(false);
-  const {isLoggedIn , setIsLoggedIn} = useContext(StoreContext);
+  const {isLoggedIn , setIsLoggedIn ,setShowLogin} = useContext(StoreContext);
   const handelOnChange = (evt) => {
     if (evt.target.name === "name") {
       setCurrentUser({ ...currentUser, name: evt.target.value });
@@ -36,7 +36,7 @@ const Login = ({ setShowLogin}) => {
   };
   const handelLogin = () => {
     const sotredUser = JSON.parse(localStorage.getItem("users")) || [];
-    console.log("users", sotredUser);
+    // console.log("users", sotredUser);
     const user = sotredUser.find(
       (u) =>
         u.email === currentUser.email && u.password === currentUser.password

@@ -4,15 +4,15 @@ import { assets } from "./../../assets/assets";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 import { AiOutlineUser } from "react-icons/ai";
-const Navbar = ({ setShowLogin}) => {
+const Navbar = () => {
   const [menu, setMenu] = useState("Home");
-  const { getTotalCartAmount ,isLoggedIn , setIsLoggedIn } = useContext(StoreContext);
+  const { getTotalCartAmount ,isLoggedIn , setIsLoggedIn ,showLogin ,setShowLogin } = useContext(StoreContext);
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
   };
   useEffect(() => {
-    console.log(isLoggedIn);
+    // console.log(isLoggedIn);
   }, [isLoggedIn]);
   return (
     <>

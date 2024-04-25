@@ -1,0 +1,58 @@
+.parent{
+    width: 100%;
+
+}
+.pay{
+    align-items:center;
+    margin:40px auto;
+    padding:15px;
+    width:35%;
+    background-color:#EEEEEE;
+    border-radius:10px;
+}
+.pay h2{
+    font-size:500;
+    margin-bottom:20px;
+    text-align:center;
+}
+.pay-email , .pay-card , .pay-card-name{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:15px; 
+}
+.pay-email label , .pay-card label , .pay-card-name label{
+    margin-bottom:8px; 
+}
+.pay input{
+    padding:10px;
+    border-radius:4px;
+    outline:none;
+    border:1px solid #c5c5c5;
+}
+.pay-card-info{
+    display:flex;
+    justify-content:space-between;
+}
+.pay-card-info input{
+    padding:10px;
+    width:100%;
+}
+.pay input:focus{
+   border:1px solid #0D1282;
+}
+.pay-button button{
+    width:100%;
+    background-color:blue;
+    padding:6px;
+    margin:5px;
+    font-size:24px;
+    border:none;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+@media (max-width:750px){
+    .pay{
+        width:100%;
+    }
+}

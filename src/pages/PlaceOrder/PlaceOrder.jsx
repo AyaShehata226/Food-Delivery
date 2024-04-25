@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
+import { useNavigate } from "react-router-dom";
 const PlaceOrder = () => {
   const {getTotalCartAmount} = useContext(StoreContext);
   const [userInfo , setUserInfo] = useState({});
@@ -19,6 +20,7 @@ const PlaceOrder = () => {
       setUserInfo({...userInfo, phone:evt.target.value});
     }
   }
+  const navigate =useNavigate();
   useEffect(()=>{
     // console.log(userInfo);
   },[userInfo])
@@ -59,7 +61,7 @@ const PlaceOrder = () => {
                 </div>
               </div>
             </div>
-            <button onClick={()=>navigate('/order')}>PROCEED TO PAYMENT</button> 
+            <button onClick={()=>navigate('/payment')}>PROCEED TO PAYMENT</button> 
           </div>
       </div>
     </div>

@@ -34,3 +34,11 @@
 .place-order .cart-total button{
     margin-top:30px;
 }
+@media (max-width:750px){
+    .place-order{
+        flex-direction:column;
+    }
+    .place-order-left{
+        justify-content:start;
+    }
+}

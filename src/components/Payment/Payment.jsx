@@ -73,8 +73,7 @@ const handleOnChange = (e) => {
     e.preventDefault();
   };
   useEffect(()=>{
-    console.log("cartitems")
-  },[cartItems , setCartItems])
+  },[])
   return (
     <form className="parent" onSubmit={handleOnSubmit}>
       <div className="pay">

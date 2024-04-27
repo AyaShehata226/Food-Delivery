@@ -6,7 +6,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { StoreContext } from "../../context/StoreContext";
 const Payment = () => {
   const [information, setInformation] = useState({});
-  const {isLoggedIn , setShowLogin , showLogin} = useContext(StoreContext);
+  const {isLoggedIn , setShowLogin , setCartItems , cartItems ,clearCart} = useContext(StoreContext);
   const navigate = useNavigate();
 //   const confirmation = () => {
 //     if (Object.keys(information).length < 5) {
@@ -26,9 +26,9 @@ const Payment = () => {
 const confirmation = () => {
     if (Object.keys(information).length < 5) {
       toast.error("Please fill all fields");
-    } else if (information.cardNumber && information.cardNumber.length !== 16) {
+    } else if (information.cardNumber && ![16, 19].includes(information.cardNumber.length)) {
       toast.error("Please enter 16 digits in card number");
-    } else if (!information.fullName || information.fullName.split(" ").length < 2) {
+    } else if (!information.fullName || information.fullName.split(" ").length <2) {
       toast.error("Please enter both first and last name in Cardholder Name");
     } else if (!isValidExpireDate(information.expireDate)) {
       toast.error("Please enter a valid expiry date (MM / YY)");
@@ -41,6 +41,7 @@ const confirmation = () => {
             text: "You Clicked the button",
             icon: "success",
           });
+          clearCart()
           navigate("/");
       }else{
         setShowLogin(true);
@@ -71,6 +72,9 @@ const handleOnChange = (e) => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
   };
+  useEffect(()=>{
+    console.log("cartitems")
+  },[cartItems , setCartItems])
   return (
     <form className="parent" onSubmit={handleOnSubmit}>
       <div className="pay">

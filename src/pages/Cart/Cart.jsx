@@ -3,9 +3,20 @@ import "./Cart.css";
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 import { HiMiniXMark } from "react-icons/hi2";
+import toast, { Toaster } from "react-hot-toast";
 const Cart = () => {
   const { cartItems, food_list, removeFromCart ,  getTotalCartAmount } = useContext(StoreContext);
   const navigate = useNavigate();
+  const handleOnSubmit =()=>{
+    if(Object.keys(cartItems).length === 0){
+      toast.error("cart Items is empty");
+      setTimeout(() => {
+        navigate('/')
+      }, 2000);
+    }else{
+      navigate('/order')
+    }
+  }
   return (
     <>
       <div className="cart">
@@ -23,7 +34,7 @@ const Cart = () => {
           {food_list.map((item, index) => {
             if (cartItems[item._id] > 0) {
               return (
-                <div>
+                <div key={index}>
                   <div className="cart-items-title cart-items-item">
                     <img src={item.image} />
                     <p>{item.name}</p>
@@ -64,7 +75,7 @@ const Cart = () => {
                 </div>
               </div>
             </div>
-            <button onClick={()=>navigate('/order')}>PROCEED TO CHECKOUT</button> 
+            <button onClick={handleOnSubmit}>PROCEED TO CHECKOUT</button> 
           </div>
           <div className="cart-promocode">
             <div>
@@ -76,6 +87,7 @@ const Cart = () => {
             </div>
           </div>
         </div>
+        <Toaster/>
       </div>
     </>
   );

@@ -17,6 +17,10 @@ const StoreContextProvider = (props)=>{
     const removeFromCart = (itemId)=>{
         setCartItems((prev)=>({...prev , [itemId]:prev[itemId]-1}))
     }
+    const clearCart = ()=>{
+        console.log("ClearCart");
+        setCartItems({});
+    }
     const getTotalCartAmount = ()=>{
         let totalAmount = 0;
         for(const item in cartItems){
@@ -33,6 +37,7 @@ const StoreContextProvider = (props)=>{
         setCartItems,
         addToCart,
         removeFromCart,
+        clearCart,
         getTotalCartAmount,
         isLoggedIn,
         setIsLoggedIn,

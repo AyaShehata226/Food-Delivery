@@ -6,7 +6,7 @@ import { StoreContext } from "../../context/StoreContext";
 import { AiOutlineUser } from "react-icons/ai";
 const Navbar = () => {
   const [menu, setMenu] = useState("Home");
-  const { getTotalCartAmount ,isLoggedIn , setIsLoggedIn ,showLogin ,setShowLogin } = useContext(StoreContext);
+  const { getTotalCartAmount ,isLoggedIn , setIsLoggedIn ,showLogin ,setShowLogin  } = useContext(StoreContext);
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);

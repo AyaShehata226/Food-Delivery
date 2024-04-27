@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 const PlaceOrder = () => {
-  const {getTotalCartAmount} = useContext(StoreContext);
+  const {getTotalCartAmount ,isLoggedIn,setShowLogin} = useContext(StoreContext);
   const [userInfo , setUserInfo] = useState({});
+  const navigate =useNavigate();
   const handleOnChange = (evt)=>{
     if(evt.target.name === "firstName"){
       setUserInfo({...userInfo, firstName:evt.target.value});
@@ -20,7 +22,18 @@ const PlaceOrder = () => {
       setUserInfo({...userInfo, phone:evt.target.value});
     }
   }
-  const navigate =useNavigate();
+  const handelOnSupmit =()=>{
+    if(Object.keys(userInfo)<6){
+      toast.error("Please Fill all fields")
+    }else if(!isLoggedIn){
+      toast.error("Please Login")
+      setTimeout(() => {
+        setShowLogin(true);
+      }, 500);
+    }else{
+      navigate('/payment');
+  }
+  }
   useEffect(()=>{
   },[])
   return (
@@ -60,9 +73,10 @@ const PlaceOrder = () => {
                 </div>
               </div>
             </div>
-            <button onClick={()=>navigate('/payment')}>PROCEED TO PAYMENT</button> 
+            <button onClick={handelOnSupmit}>PROCEED TO PAYMENT</button> 
           </div>
       </div>
+      <Toaster/>
     </div>
     </>
   );
